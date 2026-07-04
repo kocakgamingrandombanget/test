@@ -708,13 +708,35 @@
                         </div>
                     </div>
 
-                    <!-- ITEM 3: Dummy Economy -->
+                    <!-- ITEM 3: Skyreach Castle -->
                     <div class="carousel-slide">
                         <div class="slide-content grid-2-3">
-                            <img src="https://images.unsplash.com/photo-1628045610850-205fb1034d35?q=80&w=800&auto=format&fit=crop" alt="Economy" class="slide-img">
+                            <img src="photo3.png" alt="Skyreach Castle" class="slide-img">
                             <div class="slide-info">
-                                <h3 class="tr" data-en="SHOP & ECONOMY" data-es="TIENDA Y ECONOMÍA">SHOP & ECONOMY</h3>
-                                <p class="tr" data-en="Trade with others and become the richest player!" data-es="¡Comercia con otros y conviértete en el más rico!">Trade with others and become the richest player!</p>
+                                <h3 class="tr" data-en="SKYREACH CASTLE" data-es="CASTILLO SKYREACH">SKYREACH CASTLE</h3>
+                                <p class="tr" data-en="A majestic fortress in the sky, guarding the realm from above." data-es="Una majestuosa fortaleza en el cielo, protegiendo el reino desde arriba.">A majestic fortress in the sky, guarding the realm from above.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 4: Abandoned Castle -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-1-1">
+                            <img src="photo4.png" alt="Abandoned Castle" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="ABANDONED CASTLE" data-es="CASTILLO ABANDONADO">ABANDONED CASTLE</h3>
+                                <p class="tr" data-en="A forgotten ruin in the snowy mountains, waiting to be explored." data-es="Una ruina olvidada en las montañas nevadas, esperando ser explorada.">A forgotten ruin in the snowy mountains, waiting to be explored.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 5: Aly's Treehouse -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-2-3">
+                            <img src="photo5.png" alt="Aly's Treehouse" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="ALY'S TREEHOUSE" data-es="CASA DEL ÁRBOL DE ALY">ALY'S TREEHOUSE</h3>
+                                <p class="tr" data-en="A magnificent giant treehouse blooming with vibrant colors." data-es="Una magnífica y gigantesca casa en el árbol que florece con colores vibrantes.">A magnificent giant treehouse blooming with vibrant colors.</p>
                             </div>
                         </div>
                     </div>
@@ -726,6 +748,8 @@
 
             <div class="carousel-indicators" id="carousel-indicators">
                 <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
                 <div class="indicator"></div>
                 <div class="indicator"></div>
             </div>
@@ -894,7 +918,7 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal();
+        reveal(); // Trigger on load
 
         /* === 6. Gallery Carousel & Auto-play Logic === */
         const track = document.getElementById('carousel-track');
@@ -903,7 +927,7 @@
         const dots = Array.from(document.getElementById('carousel-indicators').children);
         const galleryPanel = document.getElementById('gallery-panel');
         const toggleGalleryBtn = document.getElementById('toggle-gallery');
-        const carouselWrapper = document.querySelector('.carousel-wrapper'); // Tambahkan pemilih kontainer ini
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
         
         let autoSlideInterval;
 
@@ -916,27 +940,28 @@
         const slideNext = () => {
             const maxScroll = track.scrollWidth - track.clientWidth;
             if (track.scrollLeft >= maxScroll - 10) {
-                track.scrollTo({ left: 0, behavior: 'smooth' }); // Loop back
+                // Diubah menjadi 'auto' agar kembali ke awal seketika (tidak rewind ngebut)
+                track.scrollTo({ left: 0, behavior: 'auto' }); 
             } else {
                 track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
             }
         };
 
         const startAutoSlide = () => {
-            autoSlideInterval = setInterval(slideNext, 3500); // slide every 3.5s
+            // Waktu FIX 5000ms (5 detik) untuk setiap slide
+            autoSlideInterval = setInterval(slideNext, 5000); 
         };
 
         const stopAutoSlide = () => {
             clearInterval(autoSlideInterval);
         };
 
-        // --- FITUR BARU: BERHENTI SAAT DI-HOVER / DISENTUH ---
+        // --- BERHENTI SAAT DI-HOVER / DISENTUH ---
         carouselWrapper.addEventListener('mouseenter', stopAutoSlide);
         carouselWrapper.addEventListener('mouseleave', () => {
             if (!galleryPanel.classList.contains('expanded')) startAutoSlide();
         });
         
-        // (Dukungan untuk layar sentuh HP agar saat di-tap/tahan tidak geser)
         carouselWrapper.addEventListener('touchstart', stopAutoSlide);
         carouselWrapper.addEventListener('touchend', () => {
             if (!galleryPanel.classList.contains('expanded')) startAutoSlide();
@@ -945,9 +970,9 @@
         track.addEventListener('scroll', updateDots);
 
         nextBtn.addEventListener('click', () => {
-            stopAutoSlide(); // Pause auto when user clicks
+            stopAutoSlide(); 
             slideNext();
-            startAutoSlide(); // Resume
+            startAutoSlide(); 
         });
 
         prevBtn.addEventListener('click', () => {
