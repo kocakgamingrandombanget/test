@@ -686,7 +686,7 @@
                 
                 <div class="carousel-track" id="carousel-track">
                     
-                    <!-- ITEM 1: Lobby (Class rasio grid dipindah ke div slide-content) -->
+                    <!-- ITEM 1: Lobby -->
                     <div class="carousel-slide">
                         <div class="slide-content grid-3-2">
                             <img src="lobby.png" alt="Server Lobby" class="slide-img">
@@ -740,6 +740,17 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- ITEM 6: The Marketplace -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-1-1">
+                            <img src="photo6.png" alt="The Marketplace" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="THE MARKETPLACE" data-es="EL MERCADO">THE MARKETPLACE</h3>
+                                <p class="tr" data-en="The bustling economic heart of our server." data-es="El bullicioso corazón económico de nuestro servidor.">The bustling economic heart of our server.</p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -752,6 +763,7 @@
                 <div class="indicator"></div>
                 <div class="indicator"></div>
                 <div class="indicator"></div>
+                <div class="indicator"></div> <!-- Added 6th indicator -->
             </div>
         </div>
 
@@ -940,20 +952,22 @@
         const slideNext = () => {
             const maxScroll = track.scrollWidth - track.clientWidth;
             if (track.scrollLeft >= maxScroll - 10) {
-                // Diubah menjadi 'auto' agar kembali ke awal seketika (tidak rewind ngebut)
+                // Kembali ke awal seketika
                 track.scrollTo({ left: 0, behavior: 'auto' }); 
             } else {
                 track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
             }
         };
 
-        const startAutoSlide = () => {
-            // Waktu FIX 5000ms (5 detik) untuk setiap slide
-            autoSlideInterval = setInterval(slideNext, 5000); 
-        };
-
         const stopAutoSlide = () => {
             clearInterval(autoSlideInterval);
+        };
+
+        const startAutoSlide = () => {
+            // CRITICAL FIX: Pastikan timer yang lama dihapus dulu agar tidak bertumpuk dan jadi ngebut
+            stopAutoSlide(); 
+            // Tunggu pas 5 detik (5000ms) untuk setiap foto
+            autoSlideInterval = setInterval(slideNext, 5000); 
         };
 
         // --- BERHENTI SAAT DI-HOVER / DISENTUH ---
