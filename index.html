@@ -388,15 +388,15 @@
             position: absolute;
             bottom: 0; left: 0;
             width: 100%;
-            padding: 40px 20px 15px 20px;
+            padding: 50px 30px 25px 30px; /* Padding ditingkatkan agar teks tidak menempel tepi */
             /* Gradasi gelap ke transparan agar teks terbaca jelas */
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 45%, transparent 100%);
             z-index: 2;
             text-align: left;
         }
         
         .slide-info h3 { 
-            font-size: 16px; 
+            font-size: 20px; /* UKURAN JUDUL DIPERBESAR (sebelumnya 16px) */
             color: var(--mc-title); 
             margin: 0; 
             line-height: 1.4; 
@@ -406,21 +406,22 @@
 
         /* Keterangan tersembunyi secara default */
         .slide-info p { 
-            font-size: 14px; 
+            font-size: 18px; /* UKURAN TEKS KETERANGAN DIPERBESAR (sebelumnya 14px) */
             color: #ddd; 
-            line-height: 1.4; 
+            line-height: 1.5; 
             margin: 0; 
             max-height: 0; 
             opacity: 0; 
             overflow: hidden;
             transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
         
         /* Munculkan keterangan saat kartunya di hover */
         .slide-content:hover .slide-info p {
-            max-height: 80px;
+            max-height: 120px; /* Max-height ditambah agar teks yang lebih besar cukup */
             opacity: 1;
-            margin-top: 8px;
+            margin-top: 12px;
         }
         
         /* Carousel Controls */
@@ -544,6 +545,11 @@
             .gallery-panel.expanded .carousel-track {
                 column-count: 1;
             }
+            
+            /* Menyesuaikan ukuran teks galeri untuk layar kecil */
+            .slide-info h3 { font-size: 16px; }
+            .slide-info p { font-size: 14px; }
+            .slide-content:hover .slide-info p { max-height: 100px; }
         }
     </style>
 </head>
@@ -689,10 +695,10 @@
                     <!-- ITEM 1: Lobby -->
                     <div class="carousel-slide">
                         <div class="slide-content grid-3-2">
-                            <img src="lobby.png" alt="Server Lobby" class="slide-img">
+                            <img src="photo1.png" alt="Server Lobby" class="slide-img">
                             <div class="slide-info">
                                 <h3 class="tr" data-en="MAIN LOBBY" data-es="VESTÍBULO PRINCIPAL">MAIN LOBBY</h3>
-                                <p class="tr" data-en="The central hub of our server." data-es="El centro neurálgico de nuestro servidor.">The central hub of our server.</p>
+                                <p class="tr" data-en="The central hub of our server. Create your character and start your adventure!" data-es="El centro neurálgico de nuestro servidor. ¡Crea tu personaje y comienza tu aventura!">The central hub of our server. Create your character and start your adventure!</p>
                             </div>
                         </div>
                     </div>
@@ -707,47 +713,91 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- ITEM 3: Skyreach Castle -->
-                    <div class="carousel-slide">
-                        <div class="slide-content grid-2-3">
-                            <img src="photo3.png" alt="Skyreach Castle" class="slide-img">
-                            <div class="slide-info">
-                                <h3 class="tr" data-en="SKYREACH CASTLE" data-es="CASTILLO SKYREACH">SKYREACH CASTLE</h3>
-                                <p class="tr" data-en="A majestic fortress in the sky, guarding the realm from above." data-es="Una majestuosa fortaleza en el cielo, protegiendo el reino desde arriba.">A majestic fortress in the sky, guarding the realm from above.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ITEM 4: Abandoned Castle -->
+                    
+                    <!-- ITEM 3: City Map -->
                     <div class="carousel-slide">
                         <div class="slide-content grid-1-1">
-                            <img src="photo4.png" alt="Abandoned Castle" class="slide-img">
+                            <img src="photo3.png" alt="The City Of Alyria" class="slide-img">
                             <div class="slide-info">
-                                <h3 class="tr" data-en="ABANDONED CASTLE" data-es="CASTILLO ABANDONADO">ABANDONED CASTLE</h3>
-                                <p class="tr" data-en="A forgotten ruin in the snowy mountains, waiting to be explored." data-es="Una ruina olvidada en las montañas nevadas, esperando ser explorada.">A forgotten ruin in the snowy mountains, waiting to be explored.</p>
+                                <h3 class="tr" data-en="THE CITY OF ALYRIA" data-es="LA CIUDAD DE ALYRIA">THE CITY OF ALYRIA</h3>
+                                <p class="tr" data-en="The grand map showcasing the magnificent structures built by our community." data-es="El gran mapa que muestra las magníficas estructuras construidas por nuestra comunidad.">The grand map showcasing the magnificent structures built by our community.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ITEM 5: Aly's Treehouse -->
+                    <!-- ITEM 4: The Station -->
                     <div class="carousel-slide">
-                        <div class="slide-content grid-2-3">
-                            <img src="photo5.png" alt="Aly's Treehouse" class="slide-img">
+                        <div class="slide-content grid-3-2">
+                            <img src="photo4.png" alt="Station Hub Features" class="slide-img">
                             <div class="slide-info">
-                                <h3 class="tr" data-en="ALY'S TREEHOUSE" data-es="CASA DEL ÁRBOL DE ALY">ALY'S TREEHOUSE</h3>
-                                <p class="tr" data-en="A magnificent giant treehouse blooming with vibrant colors." data-es="Una magnífica y gigantesca casa en el árbol que florece con colores vibrantes.">A magnificent giant treehouse blooming with vibrant colors.</p>
+                                <h3 class="tr" data-en="STATION HUB FEATURES" data-es="FUNCIONES DE LA ESTACIÓN">STATION HUB FEATURES</h3>
+                                <p class="tr" data-en="Special warp area, city railroads, teleport system, and the main Nether hub." data-es="Área especial de warp, ferrocarriles, sistema de teletransporte y el centro principal del Nether.">Special warp area, city railroads, teleport system, and the main Nether hub.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- ITEM 6: The Marketplace -->
+                    <!-- ITEM 5: Solwood Island -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-2-3">
+                            <img src="photo5.png" alt="Solwood Island" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="SOLWOOD ISLAND" data-es="ISLA SOLWOOD">SOLWOOD ISLAND</h3>
+                                <p class="tr" data-en="Enjoy a peaceful stay and discover the mysteries of the ancient Solwood Tree." data-es="Disfruta de una estancia pacífica y descubre los misterios del antiguo Árbol Solwood.">Enjoy a peaceful stay and discover the mysteries of the ancient Solwood Tree.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 6: Lore & Records -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-2-3">
+                            <img src="photo6.png" alt="Lore & Records" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="DEEP LORE & RECORDS" data-es="HISTORIA Y REGISTROS">DEEP LORE & RECORDS</h3>
+                                <p class="tr" data-en="Player-made exclusive content, deep lore integration, and vital server info." data-es="Contenido exclusivo de jugadores, profunda integración de la historia e información vital.">Player-made exclusive content, deep lore integration, and vital server info.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 7: Marketplace & Auctions -->
                     <div class="carousel-slide">
                         <div class="slide-content grid-1-1">
-                            <img src="photo6.png" alt="The Marketplace" class="slide-img">
+                            <img src="photo7.png" alt="Marketplace & Auctions" class="slide-img">
                             <div class="slide-info">
-                                <h3 class="tr" data-en="THE MARKETPLACE" data-es="EL MERCADO">THE MARKETPLACE</h3>
-                                <p class="tr" data-en="The bustling economic heart of our server." data-es="El bullicioso corazón económico de nuestro servidor.">The bustling economic heart of our server.</p>
+                                <h3 class="tr" data-en="MARKETPLACE & AUCTIONS" data-es="MERCADO Y SUBASTAS">MARKETPLACE & AUCTIONS</h3>
+                                <p class="tr" data-en="Player shops, auction house, and command-block stores. Buy, sell, and trade!" data-es="Tiendas de jugadores, casa de subastas y tiendas de comandos. ¡Compra, vende y cambia!">Player shops, auction house, and command-block stores. Buy, sell, and trade!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 8: Skyreach Clans -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-2-3">
+                            <img src="photo8.png" alt="Skyreach Clans" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="SKYREACH CLANS" data-es="CLANES SKYREACH">SKYREACH CLANS</h3>
+                                <p class="tr" data-en="Join clans, complete quests, and participate in minigames. More coming soon!" data-es="Únete a clanes, completa misiones y participa en minijuegos. ¡Más próximamente!">Join clans, complete quests, and participate in minigames. More coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 9: Forgotten Ruins -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-1-1">
+                            <img src="photo9.png" alt="Forgotten Ruins" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="FORGOTTEN RUINS" data-es="RUINAS OLVIDADAS">FORGOTTEN RUINS</h3>
+                                <p class="tr" data-en="The Abandoned Castle is waiting for your discovery. Are you brave enough?" data-es="El Castillo Abandonado espera tu descubrimiento. ¿Eres lo suficientemente valiente?">The Abandoned Castle is waiting for your discovery. Are you brave enough?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 10: Aly's Welcome -->
+                    <div class="carousel-slide">
+                        <div class="slide-content grid-1-1">
+                            <img src="photo10.png" alt="Aly's Welcome" class="slide-img">
+                            <div class="slide-info">
+                                <h3 class="tr" data-en="ALY'S TREEHOUSE" data-es="CASA DEL ÁRBOL DE ALY">ALY'S TREEHOUSE</h3>
+                                <p class="tr" data-en="Friends and family are always welcome at Aly's magnificent Treehouse!" data-es="¡Los amigos y familiares siempre son bienvenidos en la Casa del Árbol de Aly!">Friends and family are always welcome at Aly's magnificent Treehouse!</p>
                             </div>
                         </div>
                     </div>
@@ -763,7 +813,11 @@
                 <div class="indicator"></div>
                 <div class="indicator"></div>
                 <div class="indicator"></div>
-                <div class="indicator"></div> <!-- Added 6th indicator -->
+                <div class="indicator"></div> 
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
             </div>
         </div>
 
